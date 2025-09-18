@@ -1,0 +1,8 @@
+{
+  "name": "Poramorshok ai- hackathon",
+  "description": "An AI-powered health assistant to analyze symptoms, track health metrics, and provide personalized diet and lifestyle advice. Note: This is not a substitute for professional medical advice.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "prompt": ""
+}
