@@ -251,7 +251,7 @@ const translations: { [lang in Language]: { [key: string]: string } } = {
 		whatAppOffersText:
 			"A comprehensive suite of tools to manage your well-being:\n• AI Symptom Analyzer: Get instant, AI-powered insights on your health concerns.\n• Health Tracker: Log your vitals, track your progress with beautiful charts, and get personalized advice.\n• Diet & Exercise Planners: Receive custom 7-day plans tailored to your specific goals and health data.\n• Health Wallet: Securely store all your medical documents, prescriptions, and insurance info in one place, on your device.",
 		teamTitle: "Meet the Team",
-		teamText: `This project was developed with passion by Team Last Minute on the occasion of Technovation 25 Hackathon. We are dedicated to building accessible, user-centric technology that makes a real-world impact on people's health and lives.\n\nTeam Members:\n1.⁠ Mohammad Kamrul Hasan (Student, Bangladesh University of Engineering and Technology)\n2.⁠ ⁠Md Zarif Azfar (Student, American International University-Bangladesh)⁠\n3.⁠ ⁠Sheikh Mashrafi Mohammad (Student, Islamic University of Technology, OIC)`,
+		teamText: `This project was developed with passion by Team Last Minute on the occasion of Technovation 25 Hackathon. We are dedicated to building accessible, user-centric technology that makes a real-world impact on people's health and lives.\n\nTeam Members:\n1.⁠ Mohammad Kamrul Hasan \n(Student, Bangladesh University of Engineering and Technology)\n2.⁠ ⁠Md Zarif Azfar (Student, American International University-Bangladesh)⁠\n3.⁠ ⁠Sheikh Mashrafi Mohammad (Student, Islamic University of Technology, OIC)`,
 		// Login/Signup
 		signUp: "Sign Up",
 		signIn: "Sign In",
