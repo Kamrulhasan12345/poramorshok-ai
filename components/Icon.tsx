@@ -71,7 +71,11 @@ const Icon: React.FC<IconProps> = ({ name, className }) => {
 				strokeWidth={1.5}
 				stroke="currentColor"
 			>
-				<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M12 10.5v6m-3-3h6" />
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M12 10.5v6m-3-3h6"
+				/>
 			</svg>
 		),
 		phone: (
@@ -82,7 +86,11 @@ const Icon: React.FC<IconProps> = ({ name, className }) => {
 				strokeWidth={1.5}
 				stroke="currentColor"
 			>
-				<path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 7.593 6.157 13.75 13.75 13.75h1.25a2 2 0 001.998-1.854l.167-1.667a2 2 0 00-1.149-2.02l-2.22-1.11a2 2 0 00-2.357.45l-.63.63a11.25 11.25 0 01-5.025-5.025l.63-.63a2 2 0 00.45-2.357l-1.11-2.22a2 2 0 00-2.02-1.149l-1.667.167A2 2 0 002.25 6.75z" />
+				<path
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					d="M2.25 6.75c0 7.593 6.157 13.75 13.75 13.75h1.25a2 2 0 001.998-1.854l.167-1.667a2 2 0 00-1.149-2.02l-2.22-1.11a2 2 0 00-2.357.45l-.63.63a11.25 11.25 0 01-5.025-5.025l.63-.63a2 2 0 00.45-2.357l-1.11-2.22a2 2 0 00-2.02-1.149l-1.667.167A2 2 0 002.25 6.75z"
+				/>
 			</svg>
 		),
 		send: (
@@ -276,7 +284,7 @@ const Icon: React.FC<IconProps> = ({ name, className }) => {
 				<path
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+					d="M12 3v12m0 0l-3.75-3.75M12 15l3.75-3.75M3 21h18"
 				/>
 			</svg>
 		),
@@ -336,7 +344,7 @@ const Icon: React.FC<IconProps> = ({ name, className }) => {
 				<path
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					d="M12.75 7.625c0-1.33.916-2.438 2.063-2.438h.937a2.063 2.063 0 012.063 2.063v7.125c0 1.14-.923 2.063-2.063 2.063h-.937a2.063 2.063 0 01-2.063-2.063v-7.5zm-5.625 0c0-1.33.916-2.438 2.063-2.438h.937a2.063 2.063 0 012.063 2.063v7.125c0 1.14-.923 2.063-2.063 2.063h-.937a2.063 2.063 0 01-2.063-2.063v-7.5zM4.5 9.75h15"
+					d="M3 9v6M6 8v8M18 8v8M21 9v6M6 12h12"
 				/>
 			</svg>
 		),
