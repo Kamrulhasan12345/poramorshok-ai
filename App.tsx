@@ -167,6 +167,8 @@ const App: React.FC = () => {
 				return <HealthTracker key="tracker" />;
 			case "diet":
 				return <DietPlanner key="diet" />;
+			case "exercise":
+				return <ExercisePlanner key="exercise" />;
 			case "wallet":
 				return <HealthWallet key="wallet" />;
 			case "nearby":
