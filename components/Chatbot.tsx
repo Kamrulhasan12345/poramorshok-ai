@@ -402,8 +402,12 @@ const Chatbot: React.FC = () => {
 								}`}
 							>
 								{msg.sender === "ai" && (
-									<div className="flex-shrink-0 h-8 w-8 rounded-full bg-teal-500 flex items-center justify-center text-white shadow-sm">
-										<Icon name="logo" className="h-5 w-5" />
+									<div className="flex-shrink-0 h-8 w-8 rounded-full bg-white-500 flex items-center justify-center text-white shadow-sm">
+										<img
+											src="/images/icon-black.png"
+											alt="পরামর্শক AI Logo"
+											className="h-5 w-5"
+										/>
 									</div>
 								)}
 								<div
