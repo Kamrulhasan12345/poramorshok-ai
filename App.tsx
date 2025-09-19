@@ -162,12 +162,6 @@ const App: React.FC = () => {
 
 		// Allow users to use the app without authentication
 		switch (activeView) {
-			case "tracker":
-				return <HealthTracker key="tracker" />;
-			case "diet":
-				return <DietPlanner key="diet" />;
-			case "exercise":
-				return <ExercisePlanner key="exercise" />;
 			case "wallet":
 				return <HealthWallet key="wallet" />;
 			case "settings":

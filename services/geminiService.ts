@@ -1,11 +1,11 @@
 import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
-import { SymptomAnalysis, DietPlan, HealthEntry, DietPlanRequest, ExercisePlan, ExercisePlanRequest, HealthAdvice } from '../types';
+import { SymptomAnalysis, DietPlan, HealthEntry, DietPlanRequest, ExercisePlan, ExercisePlanRequest, HealthAdvice, Hospital } from '../types';
 
-if (!process.env.API_KEY) {
+if (!process.env.GEMINI_API_KEY) {
     console.error("API_KEY environment variable not set.");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY as string });
 
 const symptomAnalysisSchema = {
     type: Type.OBJECT,
@@ -130,6 +130,43 @@ const exercisePlanSchema = {
     required: ["advice", "plan"]
 };
 
+
+const hospitalSchema = {
+    type: Type.ARRAY,
+    items: {
+        type: Type.OBJECT,
+        properties: {
+            name: { type: Type.STRING, description: "The full name of the hospital or clinic." },
+            address: { type: Type.STRING, description: "The complete street address of the hospital." },
+            phone: { type: Type.STRING, description: "The main contact phone number for the hospital. Can be null if not found." },
+            ambulancePhone: { type: Type.STRING, description: "A dedicated phone number for ambulance services, if available. Can be null if not found." },
+            latitude: { type: Type.NUMBER, description: "The geographic latitude of the hospital." },
+            longitude: { type: Type.NUMBER, description: "The geographic longitude of the hospital." },
+        },
+        required: ["name", "address", "latitude", "longitude"]
+    }
+};
+
+export const findNearbyHospitals = async (latitude: number, longitude: number, language: 'en' | 'bn'): Promise<Hospital[]> => {
+    const langInstruction = language === 'bn' ? 'Bengali' : 'English';
+    const prompt = `Find up to 10 of the nearest hospitals, clinics, or medical centers to the following coordinates: latitude ${latitude}, longitude ${longitude}. For each location, provide its name, full address, main contact phone number (if available), a specific ambulance phone number (if available and different from the main number), and its precise latitude and longitude. The response must be a JSON array conforming to the schema. All string values in the JSON (name, address) must be in ${langInstruction}.`;
+
+    try {
+        const response: GenerateContentResponse = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
+            config: {
+                responseMimeType: "application/json",
+                responseSchema: hospitalSchema,
+            },
+        });
+        const jsonText = response.text.trim();
+        return JSON.parse(jsonText) as Hospital[];
+    } catch (error) {
+        console.error("Error finding nearby hospitals:", error);
+        throw new Error("Failed to find nearby hospitals. Please try again.");
+    }
+};
 
 export const analyzeSymptoms = async (symptoms: string, language: 'en' | 'bn'): Promise<SymptomAnalysis> => {
     const langInstruction = language === 'bn' ? 'Bengali' : 'English';
@@ -258,5 +295,71 @@ export const getFunFact = async (language: 'en' | 'bn'): Promise<string> => {
             return "মজার তথ্য: হাসলে আপনার রোগ প্রতিরোধ ক্ষমতা শক্তিশালী হতে পারে!";
         }
         return "Fun fact: Laughing can boost your immune system!";
+    }
+};
+
+export const classifyMedicalSpecialties = async (problem: string, language: 'en' | 'bn'): Promise<string[]> => {
+    const langInstruction = language === 'bn' ? 'Bengali' : 'English';
+    const prompt = `A user describes a health problem: "${problem}".
+Return a JSON array of up to 3 search keywords for finding the most appropriate nearby care using Google Places. Focus on hospital departments or services, not doctors.
+Examples: chest pain -> ["cardiology", "emergency"], head injury -> ["trauma", "emergency"], fracture -> ["orthopedic", "emergency"], pregnancy -> ["obstetrics", "maternity"].
+All strings must be in ${langInstruction}.`;
+
+    try {
+        const response: GenerateContentResponse = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
+            config: {
+                responseMimeType: "application/json",
+                responseSchema: { type: Type.ARRAY, items: { type: Type.STRING } },
+            },
+        });
+        const jsonText = response.text.trim();
+        const arr = JSON.parse(jsonText);
+        return Array.isArray(arr) ? arr.slice(0, 3) : [];
+    } catch (error) {
+        console.error("Error classifying specialties:", error);
+        return [];
+    }
+};
+
+// Emergency advice schema and function
+const emergencyAdviceSchema = {
+    type: Type.OBJECT,
+    properties: {
+        steps: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Ordered, concise steps the user can take right now before and during transport." },
+        cautions: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Short list of do-nots or warnings." },
+        whenToCallEmergencyNow: { type: Type.ARRAY, items: { type: Type.STRING }, description: "Signs that require immediate emergency call/ambulance if not already." },
+    },
+    required: ["steps", "cautions", "whenToCallEmergencyNow"],
+};
+
+export const getEmergencyAdvice = async (problem: string, language: 'en' | 'bn'): Promise<{ steps: string[]; cautions: string[]; whenToCallEmergencyNow: string[]; } | null> => {
+    const langInstruction = language === 'bn' ? 'Bengali' : 'English';
+    const prompt = `You are an emergency-first-aid assistant for a consumer health app in Bangladesh.
+User problem: "${problem}"
+Provide immediate, practical guidance the user can follow while heading to the hospital.
+Keep it short, safe, and non-diagnostic.
+Return JSON only, matching the schema. All strings in ${langInstruction}.
+Include:
+- steps: 3-6 concrete actions (positioning, hydration limits, pain/bleeding control, bring meds list, avoid strenuous activity, etc.).
+- cautions: 2-4 key things to avoid.
+- whenToCallEmergencyNow: 2-4 red flags that mean call emergency services immediately.
+Do not include any extra fields.`;
+
+    try {
+        const response: GenerateContentResponse = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
+            config: {
+                responseMimeType: "application/json",
+                responseSchema: emergencyAdviceSchema,
+            },
+        });
+        const jsonText = response.text.trim();
+        return JSON.parse(jsonText);
+    } catch (error) {
+        console.error('Error getting emergency advice:', error);
+        return null;
     }
 };

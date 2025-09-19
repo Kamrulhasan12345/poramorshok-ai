@@ -5,7 +5,8 @@ export type View =
 	| "exercise"
 	| "wallet"
 	| "settings"
-	| "login";
+	| "login"
+	| "nearby";
 
 export interface User {
 	id: string;
@@ -139,4 +140,13 @@ export interface InAppAlertInfo {
 	drugName: string;
 	dosage: string;
 	doctor: string;
+}
+
+export interface Hospital {
+    name: string;
+    address: string;
+    phone?: string;
+    ambulancePhone?: string;
+    latitude: number;
+    longitude: number;
 }

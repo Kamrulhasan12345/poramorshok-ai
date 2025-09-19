@@ -63,6 +63,28 @@ const Icon: React.FC<IconProps> = ({ name, className }) => {
 				<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5" />
 			</svg>
 		),
+		hospital: (
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth={1.5}
+				stroke="currentColor"
+			>
+				<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M12 10.5v6m-3-3h6" />
+			</svg>
+		),
+		phone: (
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				strokeWidth={1.5}
+				stroke="currentColor"
+			>
+				<path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 7.593 6.157 13.75 13.75 13.75h1.25a2 2 0 001.998-1.854l.167-1.667a2 2 0 00-1.149-2.02l-2.22-1.11a2 2 0 00-2.357.45l-.63.63a11.25 11.25 0 01-5.025-5.025l.63-.63a2 2 0 00.45-2.357l-1.11-2.22a2 2 0 00-2.02-1.149l-1.667.167A2 2 0 002.25 6.75z" />
+			</svg>
+		),
 		send: (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
