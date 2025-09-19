@@ -277,7 +277,7 @@ const Settings: React.FC<{ onNavigateToLogin?: () => void }> = ({
 								
 									<div className="relative group">
 										<img
-											src=""
+											src="/images/team-image.jpg"
 											alt="Team Last Minute"
 											className="w-full h-32 object-cover rounded-lg shadow-md"
 										/>
