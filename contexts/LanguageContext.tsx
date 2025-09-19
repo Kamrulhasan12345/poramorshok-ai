@@ -27,18 +27,22 @@ const translations: { [lang in Language]: { [key: string]: string } } = {
 		dietPlanner: "Diet Plan",
 		exercisePlanner: "Exercise",
 		healthWallet: "Wallet",
-		nearby: 'Nearby',
+		nearby: "Nearby",
 		subscription: "Subscription",
 		settings: "Settings",
 		nearbyHospitalsTitle: "Nearby Hospitals",
-		nearbyHospitalsDescription: "Find emergency medical services near your current location.",
+		nearbyHospitalsDescription:
+			"Find emergency medical services near your current location.",
 		findNearbyHospitals: "Find Nearby Hospitals",
 		findingYourLocation: "Finding your location...",
 		fetchingHospitals: "Fetching nearby hospitals...",
 		locationPermissionDenied: "Location Permission Denied",
-		howToEnableLocation: "To use this feature, please enable location services in your browser settings for this site.",
-		unableToFetchLocation: "Unable to retrieve your location. Please ensure location services are enabled and try again.",
-		noHospitalsFound: "No hospitals found near your location, or the service is unavailable. Please try again later.",
+		howToEnableLocation:
+			"To use this feature, please enable location services in your browser settings for this site.",
+		unableToFetchLocation:
+			"Unable to retrieve your location. Please ensure location services are enabled and try again.",
+		noHospitalsFound:
+			"No hospitals found near your location, or the service is unavailable. Please try again later.",
 		callHospital: "Call Hospital",
 		callAmbulance: "Call Ambulance",
 		getDirections: "Get Directions",
@@ -247,8 +251,7 @@ const translations: { [lang in Language]: { [key: string]: string } } = {
 		whatAppOffersText:
 			"A comprehensive suite of tools to manage your well-being:\n• AI Symptom Analyzer: Get instant, AI-powered insights on your health concerns.\n• Health Tracker: Log your vitals, track your progress with beautiful charts, and get personalized advice.\n• Diet & Exercise Planners: Receive custom 7-day plans tailored to your specific goals and health data.\n• Health Wallet: Securely store all your medical documents, prescriptions, and insurance info in one place, on your device.",
 		teamTitle: "Meet the Team",
-		teamText:
-			"Developed with passion by Team Last Minute. We are dedicated to building accessible, user-centric technology that makes a real-world impact on people's health and lives.",
+		teamText: `This project was developed with passion by Team Last Minute on the occasion of Technovation 25 Hackathon. We are dedicated to building accessible, user-centric technology that makes a real-world impact on people's health and lives.\n\nTeam Members:\n1.⁠ ⁠Md Zarif Azfar (Student, American International University-Bangladesh)\n2.⁠ ⁠Mohammad Kamrul Hasan (Student, Bangladesh University of Engineering and Technology)\n3.⁠ ⁠Sheikh Mashrafi Mohammad (Student, Islamic University of Technology, OIC)`,
 		// Login/Signup
 		signUp: "Sign Up",
 		signIn: "Sign In",
@@ -294,18 +297,22 @@ const translations: { [lang in Language]: { [key: string]: string } } = {
 		dietPlanner: "ডায়েট প্ল্যান",
 		exercisePlanner: "ব্যায়াম",
 		healthWallet: "ওয়ালেট",
-		nearby: 'কাছাকাছি',
+		nearby: "কাছাকাছি",
 		subscription: "সাবস্ক্রিপশন",
 		settings: "সেটিংস",
 		nearbyHospitalsTitle: "কাছাকাছি হাসপাতাল",
-		nearbyHospitalsDescription: "আপনার বর্তমান অবস্থানের কাছাকাছি জরুরি চিকিৎসা পরিষেবা খুঁজুন।",
+		nearbyHospitalsDescription:
+			"আপনার বর্তমান অবস্থানের কাছাকাছি জরুরি চিকিৎসা পরিষেবা খুঁজুন।",
 		findNearbyHospitals: "কাছাকাছি হাসপাতাল খুঁজুন",
 		findingYourLocation: "আপনার অবস্থান খোঁজা হচ্ছে...",
 		fetchingHospitals: "কাছাকাছি হাসপাতাল আনা হচ্ছে...",
 		locationPermissionDenied: "অবস্থানের অনুমতি দেওয়া হয়নি",
-		howToEnableLocation: "এই বৈশিষ্ট্যটি ব্যবহার করতে, দয়া করে আপনার ব্রাউজার সেটিংসে এই সাইটের জন্য অবস্থান পরিষেবা সক্রিয় করুন।",
-		unableToFetchLocation: "আপনার অবস্থান পুনরুদ্ধার করা সম্ভব হয়নি। দয়া করে অবস্থান পরিষেবা সক্রিয় আছে কিনা তা নিশ্চিত করে আবার চেষ্টা করুন।",
-		noHospitalsFound: "আপনার অবস্থানের কাছাকাছি কোনো হাসপাতাল পাওয়া যায়নি, অথবা পরিষেবাটি উপলব্ধ নয়। অনুগ্রহ করে পরে আবার চেষ্টা করুন।",
+		howToEnableLocation:
+			"এই বৈশিষ্ট্যটি ব্যবহার করতে, দয়া করে আপনার ব্রাউজার সেটিংসে এই সাইটের জন্য অবস্থান পরিষেবা সক্রিয় করুন।",
+		unableToFetchLocation:
+			"আপনার অবস্থান পুনরুদ্ধার করা সম্ভব হয়নি। দয়া করে অবস্থান পরিষেবা সক্রিয় আছে কিনা তা নিশ্চিত করে আবার চেষ্টা করুন।",
+		noHospitalsFound:
+			"আপনার অবস্থানের কাছাকাছি কোনো হাসপাতাল পাওয়া যায়নি, অথবা পরিষেবাটি উপলব্ধ নয়। অনুগ্রহ করে পরে আবার চেষ্টা করুন।",
 		callHospital: "হাসপাতালে কল করুন",
 		callAmbulance: "অ্যাম্বুলেন্সে কল করুন",
 		getDirections: "দিকনির্দেশ পান",
@@ -516,7 +523,7 @@ const translations: { [lang in Language]: { [key: string]: string } } = {
 			"এই ব্যবধান দূর করার ইচ্ছা থেকে জন্ম নেওয়া, পরামর্শক AI একটি সুরক্ষিত, মোবাইল-প্রথম স্বাস্থ্য পরিচয় হিসাবে শুরু হয়েছিল। আমাদের সমাধান রেকর্ড, প্রেসক্রিপশন, বীমা এবং টেলিহেলথকে একটি সহজ, ব্যক্তিগত ওয়ালেটে একত্রিত করে, ব্যবহারকারীদের তাদের স্বাস্থ্য তথ্যের নিয়ন্ত্রণ নিতে সক্ষম করে।",
 		whatAppOffersTitle: "এই অ্যাপটি কী অফার করে",
 		whatAppOffersText:
-			"আপনার সুস্থতা পরিচালনা করার জন্য একটি جامع স্যুট:\n• এআই বিশ্লেষক: আপনার স্বাস্থ্য উদ্বেগ সম্পর্কে তাত্ক্ষণিক, এআই-চালিত অন্তর্দৃষ্টি পান।\n• স্বাস্থ্য ট্র্যাকার: আপনার অত্যাবশ্যকীয় বিষয়গুলি লগ করুন, সুন্দর চার্ট দিয়ে আপনার অগ্রগতি ট্র্যাক করুন এবং ব্যক্তিগতকৃত পরামর্শ পান।\n• ডায়েট এবং ব্যায়াম পরিকল্পনাকারী: আপনার নির্দিষ্ট লক্ষ্য এবং স্বাস্থ্য ডেটার জন্য কাস্টম ৭-দিনের পরিকল্পনা গ্রহণ করুন।\n• স্বাস্থ্য ওয়ালেট: আপনার সমস্ত মেডিকেল নথি, প্রেসক্রিপশন এবং বীমা তথ্য এক জায়গায়, আপনার ডিভাইসে নিরাপদে সংরক্ষণ করুন।",
+			"আপনার সুস্থতা পরিচালনা করার জন্য একটি পরিপূর্ণ ব্যবস্থা:\n• এআই বিশ্লেষক: আপনার স্বাস্থ্য উদ্বেগ সম্পর্কে তাত্ক্ষণিক, এআই-চালিত অন্তর্দৃষ্টি পান।\n• স্বাস্থ্য ট্র্যাকার: আপনার অত্যাবশ্যকীয় বিষয়গুলি লগ করুন, সুন্দর চার্ট দিয়ে আপনার অগ্রগতি ট্র্যাক করুন এবং ব্যক্তিগতকৃত পরামর্শ পান।\n• ডায়েট এবং ব্যায়াম পরিকল্পনাকারী: আপনার নির্দিষ্ট লক্ষ্য এবং স্বাস্থ্য ডেটার জন্য কাস্টম ৭-দিনের পরিকল্পনা গ্রহণ করুন।\n• স্বাস্থ্য ওয়ালেট: আপনার সমস্ত মেডিকেল নথি, প্রেসক্রিপশন এবং বীমা তথ্য এক জায়গায়, আপনার ডিভাইসে নিরাপদে সংরক্ষণ করুন।",
 		teamTitle: "টিমের সাথে দেখা করুন",
 		teamText:
 			"টিম লাস্ট মিনিট দ্বারা আবেগের সাথে বিকশিত। আমরা অ্যাক্সেসযোগ্য, ব্যবহারকারী-কেন্দ্রিক প্রযুক্তি তৈরিতে নিবেদিত যা মানুষের স্বাস্থ্য এবং জীবনে একটি বাস্তব-বিশ্বের প্রভাব ফেলে।",
@@ -590,13 +597,16 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({
 	const toggleLanguage = useCallback(async () => {
 		const newLang = language === "en" ? "bn" : "en";
 		setLanguage(newLang);
-		
+
 		// Update in database if user is authenticated
 		if (user) {
 			try {
 				await updateLanguagePreference(user.id, newLang);
 			} catch (error) {
-				console.error('Failed to update language preference in database:', error);
+				console.error(
+					"Failed to update language preference in database:",
+					error
+				);
 			}
 		}
 	}, [language, user]);

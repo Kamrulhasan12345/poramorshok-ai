@@ -267,39 +267,22 @@ const Settings: React.FC<{ onNavigateToLogin?: () => void }> = ({
 						</h4>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 							<div className="md:col-span-1">
-								<input
+								{/* <input
 									type="file"
 									accept="image/*"
 									ref={teamImageInputRef}
 									onChange={handleTeamImageUpload}
 									className="hidden"
-								/>
-								{teamImage ? (
+								/> */}
+								
 									<div className="relative group">
 										<img
-											src={teamImage}
+											src=""
 											alt="Team Last Minute"
 											className="w-full h-32 object-cover rounded-lg shadow-md"
 										/>
-										<button
-											onClick={handleRemoveTeamImage}
-											className="absolute top-1 right-1 p-1.5 bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-											aria-label={t("removePicture")}
-										>
-											<Icon name="delete" className="h-4 w-4" />
-										</button>
 									</div>
-								) : (
-									<button
-										onClick={() => teamImageInputRef.current?.click()}
-										className="w-full h-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
-									>
-										<Icon name="upload" className="h-8 w-8" />
-										<span className="text-sm mt-1">
-											{t("uploadTeamPicture")}
-										</span>
-									</button>
-								)}
+								
 							</div>
 							<div className="md:col-span-2">
 								<p className="text-sm text-gray-600 dark:text-gray-400 whitespace-pre-line">
