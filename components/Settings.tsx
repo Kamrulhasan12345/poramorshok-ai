@@ -274,15 +274,14 @@ const Settings: React.FC<{ onNavigateToLogin?: () => void }> = ({
 									onChange={handleTeamImageUpload}
 									className="hidden"
 								/> */}
-								
-									<div className="relative group">
-										<img
-											src="/images/team-image.jpg"
-											alt="Team Last Minute"
-											className="w-full h-32 object-cover rounded-lg shadow-md"
-										/>
-									</div>
-								
+
+								<div className="relative group">
+									<img
+										src="/images/team-image-resized.jpg"
+										alt="Team Last Minute"
+										className="w-full h-32 object-cover rounded-lg shadow-md"
+									/>
+								</div>
 							</div>
 							<div className="md:col-span-2">
 								<p className="text-sm text-gray-600 dark:text-gray-400 whitespace-pre-line">
