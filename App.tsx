@@ -12,6 +12,7 @@ import HealthTracker from "./components/HealthTracker";
 import DietPlanner from "./components/DietPlanner";
 import ExercisePlanner from "./components/ExercisePlanner";
 import HealthWallet from "./components/HealthWallet";
+import Nearby from "./components/Nearby";
 import Settings from "./components/Settings";
 import LoginSignup from "./components/LoginSignup";
 import FunFact from "./components/FunFact";
@@ -164,6 +165,8 @@ const App: React.FC = () => {
 		switch (activeView) {
 			case "wallet":
 				return <HealthWallet key="wallet" />;
+			case "nearby":
+				return <Nearby key="nearby" />;
 			case "settings":
 				return (
 					<Settings

@@ -24,6 +24,7 @@ const Header = React.forwardRef<HTMLHeadElement, HeaderProps>(
 			{ id: "diet", labelKey: "dietPlanner", icon: "food" },
 			{ id: "exercise", labelKey: "exercisePlanner", icon: "exercise" },
 			{ id: "wallet", labelKey: "healthWallet", icon: "wallet" },
+			{ id: "nearby", labelKey: "nearby", icon: "hospital" },
 		];
 
 		return (
@@ -125,7 +126,7 @@ const Header = React.forwardRef<HTMLHeadElement, HeaderProps>(
 
 						{/* Segmented Control Navigation */}
 						<div className="pb-3">
-							<div className="p-1 bg-gray-200/70 dark:bg-zinc-900 rounded-lg grid grid-cols-3 sm:grid-cols-5 items-center justify-between gap-1">
+							<div className="p-1 bg-gray-200/70 dark:bg-zinc-900 rounded-lg grid grid-cols-3 sm:grid-cols-6 items-center justify-between gap-1">
 								{navItems.map((item) => (
 									<button
 										key={item.id}
