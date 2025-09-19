@@ -15,6 +15,7 @@ import HealthWallet from "./components/HealthWallet";
 import Nearby from "./components/Nearby";
 import Settings from "./components/Settings";
 import LoginSignup from "./components/LoginSignup";
+import SubscriptionPlans from "./components/SubscriptionPlans";
 import FunFact from "./components/FunFact";
 import useScroll from "./hooks/useScroll";
 import { useUserPreferences } from "./hooks/useUserPreferences";
@@ -172,7 +173,14 @@ const App: React.FC = () => {
 			case "wallet":
 				return <HealthWallet key="wallet" />;
 			case "nearby":
-				return <Nearby key="nearby" />;
+				return (
+					<Nearby
+						key="nearby"
+						onNavigateToSubscription={() => setActiveView("subscription")}
+					/>
+				);
+			case "subscription":
+				return <SubscriptionPlans key="subscription" />;
 			case "settings":
 				return (
 					<Settings

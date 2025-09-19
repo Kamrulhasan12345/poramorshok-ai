@@ -6,13 +6,15 @@ export type View =
 	| "wallet"
 	| "settings"
 	| "login"
-	| "nearby";
+	| "nearby"
+	| "subscription";
 
 export interface User {
 	id: string;
 	name: string;
 	email: string;
 	avatar: string;
+	subscriptionPlan?: "basic" | "pro";
 }
 
 export interface SymptomAnalysis {
@@ -143,10 +145,10 @@ export interface InAppAlertInfo {
 }
 
 export interface Hospital {
-    name: string;
-    address: string;
-    phone?: string;
-    ambulancePhone?: string;
-    latitude: number;
-    longitude: number;
+	name: string;
+	address: string;
+	phone?: string;
+	ambulancePhone?: string;
+	latitude: number;
+	longitude: number;
 }

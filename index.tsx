@@ -5,6 +5,7 @@ import App from "./App";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ReminderProvider } from "./contexts/ReminderContext";
+import { SubscriptionProvider } from "./contexts/SubscriptionContext";
 import { AuthProvider } from "./src/contexts/AuthContext";
 
 // Create a client
@@ -29,9 +30,11 @@ root.render(
 			<AuthProvider>
 				<ThemeProvider>
 					<LanguageProvider>
-						<ReminderProvider>
-							<App />
-						</ReminderProvider>
+						<SubscriptionProvider>
+							<ReminderProvider>
+								<App />
+							</ReminderProvider>
+						</SubscriptionProvider>
 					</LanguageProvider>
 				</ThemeProvider>
 			</AuthProvider>

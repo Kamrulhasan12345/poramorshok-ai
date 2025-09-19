@@ -85,6 +85,13 @@ const Header = React.forwardRef<HTMLHeadElement, HeaderProps>(
 							</div>
 							<div className="flex-1 flex items-center justify-end gap-2">
 								<button
+									onClick={() => setActiveView("subscription")}
+									className="px-3 py-1.5 rounded-full text-sm font-semibold transition-colors duration-200 bg-teal-100 hover:bg-teal-200 text-teal-700 dark:bg-teal-900/50 dark:hover:bg-teal-800/50 dark:text-teal-300"
+									aria-label={t("subscription")}
+								>
+									{language === "en" ? "Pro" : "প্রো"}
+								</button>
+								<button
 									onClick={toggleLanguage}
 									className="px-3 py-1.5 rounded-full text-sm font-semibold transition-colors duration-200 bg-gray-200/80 hover:bg-gray-300/80 text-gray-700 dark:bg-zinc-800/80 dark:hover:bg-zinc-700/80 dark:text-gray-300"
 									aria-label={`Switch to ${

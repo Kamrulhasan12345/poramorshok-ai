@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { Hospital } from "../types";
 import { useLanguage } from "../hooks/useLanguage";
+import { useSubscription } from "../contexts/SubscriptionContext";
 import Icon from "./Icon";
 import {
 	findNearbyHospitals,
@@ -8,8 +9,19 @@ import {
 	getEmergencyAdvice,
 } from "../services/geminiService";
 
-const Nearby: React.FC = () => {
+interface NearbyProps {
+	onNavigateToSubscription?: () => void;
+}
+
+const Nearby: React.FC<NearbyProps> = ({ onNavigateToSubscription }) => {
 	const { language, t } = useLanguage();
+	const {
+		canUseNearby,
+		nearbyUsageRemaining,
+		upgradeRequired,
+		useNearbyService,
+		subscriptionState,
+	} = useSubscription();
 	const [stage, setStage] = useState<"idle" | "locating" | "fetching">("idle");
 	const [error, setError] = useState<string>("");
 	const [hospitals, setHospitals] = useState<Hospital[]>([]);
@@ -24,6 +36,17 @@ const Nearby: React.FC = () => {
 	const isBusy = stage !== "idle";
 
 	const handleFind = useCallback(() => {
+		// Check subscription limits before proceeding
+		if (!useNearbyService()) {
+			setError(
+				language === "bn"
+					? "আপনার মাসিক সীমা শেষ! প্রো প্ল্যানে আপগ্রেড করুন।"
+					: "Monthly limit exceeded! Upgrade to Pro plan."
+			);
+			setStage("idle");
+			return;
+		}
+
 		setError("");
 		setHospitals([]);
 		setStage("locating");
@@ -105,7 +128,7 @@ const Nearby: React.FC = () => {
 				setStage("idle");
 			}
 		);
-	}, [language, t, problem]);
+	}, [language, t, problem, useNearbyService]);
 
 	const statusText = useMemo(() => {
 		if (stage === "locating") return t("findingYourLocation");
@@ -115,6 +138,66 @@ const Nearby: React.FC = () => {
 
 	return (
 		<div className="py-4">
+			{/* Subscription Status Banner */}
+			{subscriptionState.plan === "basic" && (
+				<div className="bg-gradient-to-r from-teal-50 to-blue-50 dark:from-teal-900/20 dark:to-blue-900/20 rounded-xl border border-teal-200 dark:border-teal-800 p-4 mb-4">
+					<div className="flex items-center justify-between">
+						<div className="flex items-center gap-3">
+							<Icon name="info-circle" className="h-5 w-5 text-teal-600" />
+							<div>
+								<p className="font-semibold text-teal-900 dark:text-teal-100">
+									{language === "bn" ? "বেসিক প্ল্যান" : "Basic Plan"}
+								</p>
+								<p className="text-sm text-teal-700 dark:text-teal-200">
+									{language === "bn"
+										? `আপনার ${nearbyUsageRemaining} বার ব্যবহার বাকি রয়েছে`
+										: `${nearbyUsageRemaining} uses remaining this month`}
+								</p>
+							</div>
+						</div>
+						{upgradeRequired && (
+							<button
+								onClick={onNavigateToSubscription}
+								className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg text-sm font-semibold transition-colors"
+							>
+								{language === "bn" ? "আপগ্রেড করুন" : "Upgrade"}
+							</button>
+						)}
+					</div>
+				</div>
+			)}
+
+			{/* Paywall Modal */}
+			{upgradeRequired && (
+				<div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border-2 border-orange-200 dark:border-orange-800 p-6 mb-4">
+					<div className="text-center">
+						<Icon
+							name="lock"
+							className="h-12 w-12 text-orange-500 mx-auto mb-4"
+						/>
+						<h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+							{language === "bn" ? "সীমা শেষ!" : "Limit Reached!"}
+						</h3>
+						<p className="text-gray-600 dark:text-gray-300 mb-4">
+							{language === "bn"
+								? "আপনি এই মাসে ৫ বার নিকটস্থ হাসপাতাল খোঁজার সুবিধা ব্যবহার করেছেন। আরও ব্যবহার করতে প্রো প্ল্যানে আপগ্রেড করুন।"
+								: "You've used your 5 monthly searches for nearby hospitals. Upgrade to Pro for unlimited access."}
+						</p>
+						<div className="flex gap-3 justify-center">
+							<button
+								onClick={onNavigateToSubscription}
+								className="px-6 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-lg font-semibold transition-colors"
+							>
+								{language === "bn" ? "প্রো তে আপগ্রেড করুন" : "Upgrade to Pro"}
+							</button>
+							<button className="px-6 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-gray-700 dark:text-gray-300 rounded-lg font-semibold transition-colors">
+								{language === "bn" ? "পরে আপগ্রেড করব" : "Maybe Later"}
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
+
 			<div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-sm border border-gray-200 dark:border-zinc-800 p-5 mb-4">
 				<div className="flex items-center gap-3 mb-2">
 					<Icon name="hospital" className="h-6 w-6 text-teal-600" />
@@ -147,9 +230,9 @@ const Nearby: React.FC = () => {
 				<div className="flex items-center gap-2">
 					<button
 						onClick={handleFind}
-						disabled={isBusy}
+						disabled={isBusy || upgradeRequired}
 						className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-colors ${
-							isBusy
+							isBusy || upgradeRequired
 								? "bg-gray-300 text-gray-600 cursor-not-allowed"
 								: "bg-teal-600 hover:bg-teal-700 text-white"
 						}`}
