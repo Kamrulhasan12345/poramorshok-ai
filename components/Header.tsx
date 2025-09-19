@@ -89,7 +89,7 @@ const Header = React.forwardRef<HTMLHeadElement, HeaderProps>(
 									className="px-3 py-1.5 rounded-full text-sm font-semibold transition-colors duration-200 bg-teal-100 hover:bg-teal-200 text-teal-700 dark:bg-teal-900/50 dark:hover:bg-teal-800/50 dark:text-teal-300"
 									aria-label={t("subscription")}
 								>
-									{language === "en" ? "Pro" : "প্রো"}
+									{language === "en" ? "Go Pro" : "প্রো নিন"}
 								</button>
 								<button
 									onClick={toggleLanguage}
