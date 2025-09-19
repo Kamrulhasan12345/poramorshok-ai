@@ -8,8 +8,13 @@ import React, {
 import { View } from "./types";
 import Header from "./components/Header";
 import Chatbot from "./components/Chatbot";
+import HealthTracker from "./components/HealthTracker";
+import DietPlanner from "./components/DietPlanner";
+import ExercisePlanner from "./components/ExercisePlanner";
+import HealthWallet from "./components/HealthWallet";
 import Settings from "./components/Settings";
 import LoginSignup from "./components/LoginSignup";
+import FunFact from "./components/FunFact";
 import useScroll from "./hooks/useScroll";
 import { useUserPreferences } from "./hooks/useUserPreferences";
 import { useReminders } from "./contexts/ReminderContext";
@@ -157,6 +162,14 @@ const App: React.FC = () => {
 
 		// Allow users to use the app without authentication
 		switch (activeView) {
+			case "tracker":
+				return <HealthTracker key="tracker" />;
+			case "diet":
+				return <DietPlanner key="diet" />;
+			case "exercise":
+				return <ExercisePlanner key="exercise" />;
+			case "wallet":
+				return <HealthWallet key="wallet" />;
 			case "settings":
 				return (
 					<Settings
@@ -200,6 +213,7 @@ const App: React.FC = () => {
 					}`}
 				>
 					<div className="max-w-7xl mx-auto">{renderView()}</div>
+					{activeView !== "login" && <FunFact />}
 				</main>
 			</div>
 		</div>
