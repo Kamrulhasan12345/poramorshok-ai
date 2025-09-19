@@ -150,3 +150,12 @@ export interface Hospital {
     latitude: number;
     longitude: number;
 }
+
+// Subscription Types
+export type SubscriptionPlan = "basic" | "pro";
+
+export interface SubscriptionState {
+	plan: SubscriptionPlan;
+	nearbyUsageCount: number;
+	nearbyUsageLimit: number;
+}
